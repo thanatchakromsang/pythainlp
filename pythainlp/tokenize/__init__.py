@@ -104,9 +104,9 @@ def sent_tokenize(text, engine="whitespace+newline"):
     :return: a list of text, split by whitespace or new line.
     """
     if engine == "whitespace":
-        sentences = nltk.tokenize.WhitespaceTokenizer().tokenize(text)
+        sentences = re.split(r' +', text, re.U)
     else:
-        sentences = re.sub(r"\n+|\s+", "|", text, re.U).split("|")
+        sentences = text.split()
 
     return sentences
 
